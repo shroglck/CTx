@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ## Download models
 
-* Download pretrained CompNet weights from [here](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/akortyl1_jh_edu/EYH4UDvQnQ9Ettu7cBQAfZoBFLU0gZeredTmfUssMJCrKg?e=HqxXAs) and copy them inside the **models** folder.
+* Download pretrained CompNet weights from [here](https://drive.google.com/file/d/1eeRTvCUwqekM0cJl0fWcIenFAjVL24bH/view?usp=share_link) and copy them inside the **models** folder.
 
 
 
@@ -37,13 +37,12 @@ python Code/test.py
 ```
 
 
-## Initializing CompositionalNet Parameters
+## Initializing CTx-net Parameters
 
-We initialize CompositionalNets (i.e. the vMF kernels and mixture models) by clustering the training data. 
-In particular, we initialize the vMF kernels by clustering the feature vectors:
+CTx-Net parameters (vMF kernels and mixture models ) are initialized by clustering the feature vectors
 
 ```
-python Initialization_Code/vMF_clustering.py
+python vc_cluster_fine.py
 ``` 
 
 Furthermore, we initialize the mixture models by EM-type learning.
@@ -51,13 +50,16 @@ The initial cluster assignment for the EM-type learning is computed based on the
 To compute the similarity matrices use:
  
 ```
-python Initialization_Code/comptSimMat.py
+python simmat_finer.py
 ``` 
 
-As this process takes some time we provide Afterwards you can compute the initialization of the mixture models by executing:
-
+Similarly the mixture model weights can be learned using
 ```
-python Initialization_Code/Learn_mix_model_vMF_view.py
+python mix_model_lear_finer.py
+```
+To train the model
+```
+python compose_trainer_2.py
 ```
 
 
